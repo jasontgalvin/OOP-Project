@@ -1,4 +1,5 @@
 #pragma once
+//Demonstrated Git
 class Disc
 {
 public:
@@ -7,4 +8,3 @@ public:
 private:
 	char discType;
 };
-
