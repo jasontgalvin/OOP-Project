@@ -3,7 +3,7 @@
 class Board
 {
 private:
-	Disc board[7][6];
+	Disc board[6][7];
 
 public:
 	Board();

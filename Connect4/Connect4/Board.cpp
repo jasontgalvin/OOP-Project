@@ -21,7 +21,7 @@ Disc * Board::getBoard()
 
 bool Board::isFull()//to see the whole board full or not(legalMove() is for checking the vertical is full or not when adding Disc)
 {
-	for (int i = 0; i<6; i++) {
+	for (int i = 0; i<7; i++) {
 		if (board[0][i].getDiscType() == '-') {
 			return false;
 		}
@@ -31,7 +31,7 @@ bool Board::isFull()//to see the whole board full or not(legalMove() is for chec
 
 bool Board::legalMove(int move)
 {
-	if (move >= 0 && move <= 5) {  //Vertical is 6
+	if (move >= 0 && move <= 6) {  //Vertical is 7
 
 		if (board[0][move].getDiscType() == '-') {//to confirm this vertical is not full
 			return true;
@@ -50,9 +50,9 @@ bool Board::legalMove(int move)
 
 void Board::displayBoard()
 {
-	for (int i = 0; i<7; i++)//Horizontal
+	for (int i = 0; i<6; i++)//Horizontal
 	{
-		for (int j = 0; j<6; j++)//Vertical
+		for (int j = 0; j<7; j++)//Vertical
 			cout << board[i][j].getDiscType() << " ";
 		cout << endl;
 	}
@@ -65,7 +65,7 @@ void Board::addDisc(int move, char playerType) //the type of Disc for player1 is
 		while (board[i][move].getDiscType() == '-') {
 			i++;
 		}
-		board[i - 1][move].setDiscType(playerType);
+		board[i-1][move].setDiscType(playerType);
 	}
 
 }
