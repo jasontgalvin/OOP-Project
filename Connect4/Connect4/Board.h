@@ -13,6 +13,6 @@ public:
 	bool isFull();
 	bool legalMove(int move);
 	void displayBoard();
-	void addDisc(int move);
+	void addDisc(int move, char playerType);
 };
 
