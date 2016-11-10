@@ -22,11 +22,15 @@ bool Board::isFull()
 	return false;
 }
 
-bool Board::legalMove()
+bool Board::legalMove(int move)
 {
 	return false;
 }
 
 void Board::displayBoard()
+{
+}
+
+void Board::addDisc(int move)
 {
 }

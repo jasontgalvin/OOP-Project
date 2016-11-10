@@ -11,7 +11,8 @@ public:
 	Disc* getBoard(); //get the array
 	//void setBoard(int &board); Tricky and not needed
 	bool isFull();
-	bool legalMove();
+	bool legalMove(int move);
 	void displayBoard();
+	void addDisc(int move);
 };
 

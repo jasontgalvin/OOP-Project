@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include <iostream>
 
 
 Player::Player()
@@ -12,10 +12,7 @@ Player::~Player()
 {
 }
 
-void Player::takeTurn(Board board)
-{
 
-}
 
 int Player::getScore()
 {
@@ -45,4 +42,19 @@ string Player::setName(string name)
 void Player::setDisc(Disc & disc)
 {
 	this->disc = disc;
+}
+
+void Player::takeTurn(Board &board)
+{
+	board.displayBoard();
+	int input;
+	cout << "Enter the number of which column you want to drop a disc into." << endl;
+	while (cin >> input && input != NULL) {
+		if (board.legalMove(--input)) {
+			board.addDisc(input);
+		}
+		else {
+			cout << "That's an illegal move." << endl;
+		}
+	}
 }

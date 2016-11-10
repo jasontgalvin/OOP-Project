@@ -8,7 +8,7 @@ class Player
 public:
 	Player();
 	~Player();
-	void takeTurn(Board board);
+	void takeTurn(Board & board);
 	int getScore();
 	string getName();
 	Disc getDisc();
