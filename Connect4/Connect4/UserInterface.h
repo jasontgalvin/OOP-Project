@@ -1,7 +1,8 @@
-
 #pragma once
 #include <string>
 #include "Disc.h"
+#include <iostream> // include header
+
 using namespace std;
 class UserInterface
 {

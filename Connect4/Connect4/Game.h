@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "Computer.h"
 #include "Board.h"
+#include <iostream>
+using namespace std;
 
 class Game
 {
