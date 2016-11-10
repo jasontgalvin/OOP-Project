@@ -17,6 +17,8 @@ public:
 	void setComputer(Computer &computer);
 	void setTurn(int turn);
 	void setBoard(Board &board);
+	void takeTurn();
+	Disc checkWin(Disc &disc);
 	
 	
 private:

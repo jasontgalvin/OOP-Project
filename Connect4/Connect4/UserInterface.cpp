@@ -44,7 +44,20 @@ void UserInterface::displayStartup()
 }
 void UserInterface::displayWinner(Disc disc) 
 {
+	//This if statement will simply check who's disc was passed in
+	//But its still early to tell how exactly we can tell who's disc it is
+	if (0)	
+	{
+		cout << "Player 1 is the winner!" << endl;
+	}
+	else
+	{
+		cout << "Computer is the winnter!" << endl;
+	}
 
 }
-void UserInterface::displayInvalidMove() {}
+void UserInterface::displayInvalidMove() 
+{
+	cout << "Error, invalid move. Please make a valid move" << endl;
+}
 

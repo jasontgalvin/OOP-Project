@@ -1,10 +1,12 @@
 #include "Game.h"
+#include "Disc.h"
+#include "Player.h"
 #include <iostream>
 using namespace std;
 
 Game::Game()
 {
-	turn = 0;
+	turn = 1;
 }
 
 
@@ -50,4 +52,27 @@ void Game::setTurn(int turn)
 void Game::setBoard(Board & board)
 {
 	this->board = board;
+}
+
+void Game::takeTurn()
+{
+	//player starts first
+	//check if turn is an even or odd number
+	if (turn % 2 != 0)
+	{
+		player.takeTurn(getBoard());
+		checkWin(player.getDisc());
+		turn++;
+	}
+	else
+	{
+		computer.takeTurn(getBoard());
+		checkWin(computer.getDisc());
+		turn++;
+	}
+}
+
+Disc Game::checkWin(Disc & disc)
+{
+
 }
