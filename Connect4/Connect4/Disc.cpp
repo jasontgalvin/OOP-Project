@@ -2,7 +2,7 @@
 
 Disc::Disc()
 {
-	discType = 0;
+	discType = '-';
 }
 
 
