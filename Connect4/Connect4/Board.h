@@ -14,5 +14,10 @@ public:
 	bool legalMove(int move);
 	void displayBoard();
 	void addDisc(int move, char playerType);
+	void deleteDisc(int move);
+	int Evaluate(char Compare);
+	int AlphaBeta(int depth, int alpha, int beta);
+	int IsWin();
+
 };
 
