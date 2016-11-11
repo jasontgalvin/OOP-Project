@@ -36,6 +36,9 @@ Disc * Board::getBoard()
 	return *board;
 }
 
+int getBestMove() {
+	return Best_Move;
+}
 
 bool Board::isFull()//to see the whole board full or not(legalMove() is for checking the vertical is full or not when adding Disc)
 {
@@ -517,6 +520,11 @@ int Board::IsWin() // used by AI to stop human player when human player is going
 			Count_Left = 1;
 			Count_Right = 1;
 		}
+	return 0;
+}
+
+int Board::getBestMove()
+{
 	return 0;
 }
 

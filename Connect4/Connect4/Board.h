@@ -4,6 +4,8 @@ class Board
 {
 private:
 	Disc board[6][7];
+	int TypeNum[9];//array of all the type of situation like 1 Disc;2 Disc;3 Disc left/right note:see constant above
+	int Best_Move;// the result colomn computer decide to add Disc
 
 public:
 	Board();
@@ -18,6 +20,7 @@ public:
 	int Evaluate(char Compare);
 	int AlphaBeta(int depth, int alpha, int beta);
 	int IsWin();
+	int getBestMove();
 
 };
 
