@@ -18,7 +18,7 @@ UserInterface::~UserInterface()
 {
 }
 
-void UserInterface::displayStartup() 
+void UserInterface::displayStartup()
 {
 	string input = "";
 	cout << "Welcome to Connect 4 " << endl;
@@ -57,11 +57,11 @@ void UserInterface::displayStartup()
 	}
 
 }
-void UserInterface::displayWinner(Disc disc) 
+void UserInterface::displayWinner(Disc disc)
 {
 	//This if statement will simply check who's disc was passed in
 	//But its still early to tell how exactly we can tell who's disc it is
-	if (0)	
+	if (disc.getDiscType() == '1')
 	{
 		cout << "Player 1 is the winner!" << endl;
 	}
@@ -71,7 +71,7 @@ void UserInterface::displayWinner(Disc disc)
 	}
 
 }
-void UserInterface::displayInvalidMove() 
+void UserInterface::displayInvalidMove()
 {
 	cout << "Error, invalid move. Please make a valid move" << endl;
 }

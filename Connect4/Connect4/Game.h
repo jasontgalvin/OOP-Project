@@ -18,7 +18,14 @@ public:
 	void setTurn(int turn);
 	void setBoard(Board &board);
 	void takeTurn();
-	Disc checkWin(Disc &disc);
+	bool checkWin(Board & board);
+	bool checkFour(Board &board, int a, int b, int c, int d);
+
+	int horizontalCheck(Board &board);
+
+	int verticalCheck(Board &board);
+
+	int diagonalCheck(Board &board);
 	
 	
 private:
