@@ -81,7 +81,20 @@ bool Game::checkWin(Board &board)
 }
 
 //THIS IS WHERE THINGS ARE BROKEN AND I CANT FIGURE OUT WHY
-bool Game::checkFour(Board &board, int a, int b, int c, int d) {
+bool Game::checkFour(Disc **board, int loc, int check,  int a, int b, int c, int d) {
+	if (check = 0) { //horizintal checking
+		return (board[a][loc].getDiscType() == board[b][loc].getDiscType() &&
+			board[b][loc].getDiscType() == board[c][loc].getDiscType() &&
+			board[c][loc].getDiscType() == board[d][loc].getDiscType() && board[a][loc].getDiscType() != '-');
+	}
+	else if (check = 1) { //vertical checking
+
+	}
+
+	if (check = 2) { //diagonal checking
+
+	}
+
 	if (board[a] == board[b] && board[b] == board[c] && board[c] == board[d] && board[a] != '-')
 	{
 		return true;
@@ -102,7 +115,7 @@ int Game::horizontalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS; row++) {
 		for (col = 0; col < BOARD_COLS - 3; col++) {
 			idx = BOARD_COLS * row + col;
-			if (checkFour(board, idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
+			if (checkFour(board.getBoard(), idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
 				return 1;
 			}
 		}
@@ -119,7 +132,7 @@ int Game::verticalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS - 3; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
 			idx = BOARD_COLS * row + col;
-			if (checkFour(board, idx, idx + HEIGHT, idx + HEIGHT * 2, idx + HEIGHT * 3)) {
+			if (checkFour(board.getBoard(), col, idx, idx + HEIGHT, idx + HEIGHT * 2, idx + HEIGHT * 3)) { //need the column to check
 				return 1;
 			}
 		}
@@ -134,7 +147,7 @@ int Game::diagonalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS - 3; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
 			idx = BOARD_COLS * row + col;
-			if (count <= 3 && checkFour(board, idx, idx + DIAG_LFT, idx + DIAG_LFT * 2, idx + DIAG_LFT * 3) || count >= 3 && checkFour(board, idx, idx + DIAG_RGT, idx + DIAG_RGT * 2, idx + DIAG_RGT * 3)) {
+			if (count <= 3 && checkFour(board.getBoard(), idx, idx + DIAG_LFT, idx + DIAG_LFT * 2, idx + DIAG_LFT * 3) || count >= 3 && checkFour(board, idx, idx + DIAG_RGT, idx + DIAG_RGT * 2, idx + DIAG_RGT * 3)) {
 				return 1;
 			}
 			count++;

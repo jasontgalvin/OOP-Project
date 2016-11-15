@@ -13,7 +13,7 @@ public:
 	string getName();
 	Disc getDisc();
 	void setScore(int score);
-	string setName(string name);
+	void setName(string name);
 	void setDisc(Disc &disc);
 private:
 	int score;
