@@ -34,7 +34,7 @@ void Player::setScore(int score)
 	this->score = score;
 }
 
-string Player::setName(string name)
+void Player::setName(string name)
 {
 	this->name = name;
 }
@@ -51,7 +51,7 @@ void Player::takeTurn(Board &board)
 	cout << "Enter the number of which column you want to drop a disc into." << endl;
 	while (cin >> input && input != NULL) {
 		if (board.legalMove(--input)) {
-			board.addDisc(input);
+			board.addDisc(input, '1');
 		}
 		else {
 			cout << "That's an illegal move." << endl;
