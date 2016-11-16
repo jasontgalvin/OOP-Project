@@ -18,5 +18,5 @@ char Disc::getDiscType()
 
 void Disc::setDiscType(char type)
 {
-	this->discType = type;
+	discType = type;
 }

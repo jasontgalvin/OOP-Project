@@ -25,37 +25,6 @@ void UserInterface::displayStartup()
 	cout << "Please select an option " << endl;
 	cout << "1. Start Game\n2. View Scores\n3. Quit" << endl;	//Ive included a View Scores option, this can easily be removed if we dont have the time
 
-	Player *player = new Player();
-
-	while ((input != "1") && (input != "2") && (input != "3"))
-	{
-		cin >> input;
-		if (input == "1")
-		{
-			//START GAME
-			Game *game = new Game();
-			Board *board = new Board();
-			Computer *cpu = new Computer();
-
-			cout << "Input Name: " << endl;
-			cin >> input;
-			player->setName(input);
-		}
-		else if (input == "2")
-		{
-			//VIEW SCORES
-			cout << player->getName() << "'s score is: " << player->getScore() << endl;
-
-		}
-		else if (input == "3")
-		{
-			exit(0);	//Program terminates
-		}
-		else {
-			cout << "Error, invalid input" << endl;
-		}
-	}
-
 }
 void UserInterface::displayWinner(Disc disc)
 {

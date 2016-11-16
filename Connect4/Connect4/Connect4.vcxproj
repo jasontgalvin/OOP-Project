@@ -114,6 +114,7 @@
     <ClInclude Include="Computer.h" />
     <ClInclude Include="Disc.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
@@ -122,6 +123,7 @@
     <ClCompile Include="Computer.cpp" />
     <ClCompile Include="Disc.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>

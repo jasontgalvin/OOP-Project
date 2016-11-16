@@ -23,7 +23,15 @@ int Best_Move;// the result colomn computer decide to add Disc
 
 Board::Board()
 {
-	//nothing to initialize here because Board::board is an array of Disc, Disc will initialize itself to '-'
+	board = new Disc *[Board_Horizontal];
+
+	for (int i = 0; i < Board_Horizontal; i++) {
+		
+		board[i] = new Disc[Board_Vertical];
+		for (int j = 0; j < Board_Vertical; j++) {
+			board[i][j].setDiscType('-');
+		}
+	}
 }
 
 Board::~Board()
@@ -31,9 +39,9 @@ Board::~Board()
 }
 
 
-Disc * Board::getBoard()
+Disc ** Board::getBoard()
 {
-	return *board;
+	return board;
 }
 
 int getBestMove() {
@@ -71,9 +79,9 @@ bool Board::legalMove(int move)
 
 void Board::displayBoard()
 {
-	for (int i = 0; i<6; i++)//Horizontal
+	for (int i = 0; i<Board_Horizontal; i++)//Horizontal
 	{
-		for (int j = 0; j<7; j++)//Vertical
+		for (int j = 0; j<Board_Vertical; j++)//Vertical
 			cout << board[i][j].getDiscType() << " ";
 		cout << endl;
 	}
