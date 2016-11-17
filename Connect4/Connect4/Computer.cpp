@@ -11,7 +11,7 @@ Computer::~Computer()
 {
 }
 
-void Computer::takeTurn(Board board)
+void Computer::takeTurn(Board &board)
 {
 	/*
 	Board b;
@@ -42,13 +42,22 @@ void Computer::takeTurn(Board board)
 
 	b.displayBoard();
 	*/
+	cout << "\ncomputer takes turn\n"<<endl;
 
-	while (int x = board.AlphaBeta(7, -30000, 30000) && board.getBestMove() != NULL) {
-		if (board.legalMove(board.getBestMove())) {
+
+	int x = board.AlphaBeta(7, -30000, 30000);
+
+	if (board.getBestMove() != NULL) {
+
+		if (1) {
 			board.addDisc(board.getBestMove(),'2');
 		}
 		else {
 			cout << "illegal computer output" << endl;
 		}
+		board.displayBoard();
+	}
+	else {
+		cout << "AI empty";
 	}
 }

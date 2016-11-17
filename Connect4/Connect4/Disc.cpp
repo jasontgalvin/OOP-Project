@@ -5,11 +5,9 @@ Disc::Disc()
 	discType = '-';
 }
 
-
 Disc::~Disc()
 {
 }
-
 
 char Disc::getDiscType()
 {
@@ -18,5 +16,5 @@ char Disc::getDiscType()
 
 void Disc::setDiscType(char type)
 {
-	discType = type;
+	this->discType = type;
 }

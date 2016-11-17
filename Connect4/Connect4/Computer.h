@@ -6,6 +6,6 @@ class Computer : public Player
 public:
 	Computer();
 	~Computer();
-	void takeTurn(Board board);
+	void takeTurn(Board &board);
 };
 

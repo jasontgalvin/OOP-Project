@@ -17,21 +17,13 @@
 
 using namespace std;
 
-int TypeNum[TypeNumber];//array of all the type of situation like 1 Disc;2 Disc;3 Disc left/right note:see constant above
-int Best_Move;// the result colomn computer decide to add Disc
+
+
 
 
 Board::Board()
 {
-	board = new Disc *[Board_Horizontal];
-
-	for (int i = 0; i < Board_Horizontal; i++) {
-		
-		board[i] = new Disc[Board_Vertical];
-		for (int j = 0; j < Board_Vertical; j++) {
-			board[i][j].setDiscType('-');
-		}
-	}
+	x = 1;
 }
 
 Board::~Board()
@@ -39,12 +31,15 @@ Board::~Board()
 }
 
 
-Disc ** Board::getBoard()
+Disc *Board::getBoard()
 {
-	return board;
+	//return *board;
+	return NULL;
 }
 
-int getBestMove() {
+int Board:: getBestMove() {
+
+	
 	return Best_Move;
 }
 
@@ -79,15 +74,15 @@ bool Board::legalMove(int move)
 
 void Board::displayBoard()
 {
-	for (int i = 0; i<Board_Horizontal; i++)//Horizontal
+	for (int i = 0; i<6; i++)//Horizontal
 	{
-		for (int j = 0; j<Board_Vertical; j++)//Vertical
+		for (int j = 0; j<7; j++)//Vertical
 			cout << board[i][j].getDiscType() << " ";
 		cout << endl;
 	}
 }
 
-void Board::addDisc(int move, char playerType) //the type of Disc for player1 is '1',for player2 or computer is '2'
+void Board::addDisc(int move, char playerType) //the type of Disc for '1' is '1',for '2' or computer is '2'
 {
 
 
@@ -109,7 +104,7 @@ void Board::addDisc(int move, char playerType) //the type of Disc for player1 is
 
 }
 
-void Board::deleteDisc(int move) //used in AI evaluation test
+void Board::deleteDisc(int move)
 {
 	int i = 1;
 	while (board[i][move].getDiscType() == '-') {
@@ -118,13 +113,13 @@ void Board::deleteDisc(int move) //used in AI evaluation test
 	board[i][move].setDiscType('-');
 }
 
-void TypeNumInit(void) //type array initialization
+void Board::TypeNumInit(void) //type array initialization
 
 {
 	for (int i = 0; i<TypeNumber; i++)
 		TypeNum[i] = 0;
 }
-void TypeNumSet(void) //get the chain of Disc
+void Board::TypeNumSet(void) //get the chain of Disc
 
 {
 	TypeNum[0] = TypeNum[0] / 4;
@@ -144,7 +139,7 @@ void TypeNumSet(void) //get the chain of Disc
 
 
 
-int CountScore(void) // get Score for evaluation
+int Board::CountScore(void) // get Score for evaluation
 
 {
 	int Score = 0;
@@ -161,7 +156,7 @@ int CountScore(void) // get Score for evaluation
 	return Score;
 }
 
-int Board::Evaluate(char Compare) //evaluation function used in Alphabeta prunning
+int Board::Evaluate(char Compare)
 
 {
 	int Count_Left = 1;
@@ -387,7 +382,7 @@ int Board::Evaluate(char Compare) //evaluation function used in Alphabeta prunni
 
 
 
-int Board::IsWin() // used by AI to stop human player when human player is going to win
+int Board::IsWin()
 {
 	char Compare = '1';
 	int Count_Left = 1;
@@ -531,29 +526,26 @@ int Board::IsWin() // used by AI to stop human player when human player is going
 	return 0;
 }
 
-int Board::getBestMove()
-{
-	return 0;
-}
 
 
 
 
 
 int Board::AlphaBeta(int depth, int alpha, int beta) // Alphabeta prunning algorithm for AI
-{
-	int Level = 1;
-	int val;
-	char Compare;
 
+{
+
+	int Level = 1;
+	int val = 0;
+	int Compare;
 	if ((Level % 2) == 1)
 		Compare = '2';
-	else
-		Compare = '1';
+	else Compare = '1';
 
 	if ((depth <= 0) || (IsWin()))
 		return Evaluate(Compare);
-	for (int i = 0; i<Board_Vertical; i++)
+
+	for (int i = 1; i<Board_Vertical+1; i++)
 	{
 		if (board[1][i + 1].getDiscType() != Board_Empty)
 			continue;

@@ -19,10 +19,7 @@ int main() {
 			game->getPlayer().setName(input);
 
 			game->takeTurn();
-			game->takeTurn();
-			game->takeTurn();
-			game->takeTurn();
-			game->takeTurn();
+
 
 			/*while ((game->checkWin(game->getBoard()) != true) {
 				game->takeTurn();

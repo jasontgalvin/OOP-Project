@@ -61,16 +61,19 @@ void Game::takeTurn()
 {
 	//player starts first
 	//check if turn is an even or odd number
-	if (turn % 2 != 0)
-	{
-		player.takeTurn(getBoard());
-		turn++;
-	}
-	else
-	{
-		computer.takeTurn(getBoard());
-		turn++;
-	}
+
+		if (turn % 2 != 0)
+		{
+			player.takeTurn(board);
+			turn++;
+		}
+		else
+		{
+			computer.takeTurn(board);
+			turn++;
+		}
+	
+	
 }
 
 bool Game::checkWin(Board &board)
@@ -79,7 +82,7 @@ bool Game::checkWin(Board &board)
 }
 
 //THIS IS WHERE THINGS ARE BROKEN AND I CANT FIGURE OUT WHY part 2, electric boogaloo
-bool Game::checkFour(Disc **board, int loc, int check,  int a, int b, int c, int d) {
+bool Game::checkFour(Disc board[][7], int loc, int check,  int a, int b, int c, int d) {
 	if (check == 0) { //horizintal checking
 		return (board[a][loc].getDiscType() == board[b][loc].getDiscType() &&
 			board[b][loc].getDiscType() == board[c][loc].getDiscType() &&
@@ -115,7 +118,7 @@ int Game::horizontalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS; row++) {
 		for (col = 0; col < BOARD_COLS - 3; col++) {
 			idx = BOARD_COLS * row + col;
-			if (checkFour(board.getBoard(), col, 0, idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
+			if (checkFour(board.board,col, 0, idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
 				return 1;
 			}
 		}
@@ -132,7 +135,7 @@ int Game::verticalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS - 3; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
 			idx = BOARD_COLS * row + col;
-			if (checkFour(board.getBoard(), col, 1, idx, idx + HEIGHT, idx + HEIGHT * 2, idx + HEIGHT * 3)) { //need the column to check
+			if (checkFour(board.board, col, 1, idx, idx + HEIGHT, idx + HEIGHT * 2, idx + HEIGHT * 3)) { //need the column to check
 				return 1;
 			}
 		}
@@ -147,8 +150,8 @@ int Game::diagonalCheck(Board &board) {
 	for (row = 0; row < BOARD_ROWS - 3; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
 			idx = BOARD_COLS * row + col;
-			if (count <= 3 && checkFour(board.getBoard(), col, 2, idx, idx + DIAG_LFT, idx + DIAG_LFT * 2, idx + DIAG_LFT * 3) || count >= 3 && 
-				checkFour(board.getBoard(), col, 2, idx, idx + DIAG_RGT, idx + DIAG_RGT * 2, idx + DIAG_RGT * 3)) {
+			if (count <= 3 && checkFour(board.board, col, 2, idx, idx + DIAG_LFT, idx + DIAG_LFT * 2, idx + DIAG_LFT * 3) || count >= 3 &&
+				checkFour(board.board, col, 2, idx, idx + DIAG_RGT, idx + DIAG_RGT * 2, idx + DIAG_RGT * 3)) {
 				return 1;
 			}
 			count++;

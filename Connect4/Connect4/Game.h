@@ -19,7 +19,7 @@ public:
 	void setBoard(Board &board);
 	void takeTurn();
 	bool checkWin(Board & board);
-	bool checkFour(Disc ** board, int loc, int type, int a, int b, int c, int d);
+	bool checkFour(Disc board[][7], int loc, int type, int a, int b, int c, int d);
 
 	int horizontalCheck(Board &board);
 
