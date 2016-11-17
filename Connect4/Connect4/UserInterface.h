@@ -11,7 +11,7 @@ public:
 	UserInterface();
 	~UserInterface();
 	void displayStartup();
-	void displayWinner(Disc disc);
+	void displayWinner(char playerType);
 	void displayInvalidMove();
 };
 

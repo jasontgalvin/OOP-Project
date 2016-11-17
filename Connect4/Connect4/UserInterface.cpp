@@ -26,11 +26,11 @@ void UserInterface::displayStartup()
 	cout << "1. Start Game\n2. View Scores\n3. Quit" << endl;	//Ive included a View Scores option, this can easily be removed if we dont have the time
 
 }
-void UserInterface::displayWinner(Disc disc)
+void UserInterface::displayWinner(char playerType)
 {
 	//This if statement will simply check who's disc was passed in
 	//But its still early to tell how exactly we can tell who's disc it is
-	if (disc.getDiscType() == '1')
+	if (playerType == '1')
 	{
 		cout << "Player 1 is the winner!" << endl;
 	}

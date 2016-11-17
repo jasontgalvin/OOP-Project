@@ -46,7 +46,7 @@ void Player::setDisc(Disc & disc)
 
 void Player::takeTurn(Board &board)
 {
-	//board.displayBoard();
+	board.displayBoard();
 	int input;
 	cout << "Enter the number of which column you want to drop a disc into." << endl;
 	cin >> input;

@@ -78,28 +78,83 @@ void Game::takeTurn()
 
 bool Game::checkWin(Board &board)
 {
+	/*
+	cout << endl << endl << endl << endl;
+	cout << horizontalCheck(board);
+	cout << verticalCheck(board);
+	cout << diagonalCheck(board);
+	cout << endl << endl << endl << endl;
+	*/
+
 	return (horizontalCheck(board) || verticalCheck(board) || diagonalCheck(board));
 }
 
 //THIS IS WHERE THINGS ARE BROKEN AND I CANT FIGURE OUT WHY part 2, electric boogaloo
 bool Game::checkFour(Disc board[][7], int loc, int check,  int a, int b, int c, int d) {
 	if (check == 0) { //horizintal checking
-		return (board[a][loc].getDiscType() == board[b][loc].getDiscType() &&
+
+		/*
+		cout << (board[a][loc].getDiscType() != '-');
+		cout << (board[a][loc].getDiscType() == board[b][loc].getDiscType());
+		cout << (board[b][loc].getDiscType() == board[c][loc].getDiscType());
+		cout << (board[c][loc].getDiscType() == board[d][loc].getDiscType());
+		cout << endl;
+		
+		board[a][loc].getDiscType() == '-' && board[a][loc].getDiscType() == board[b][loc].getDiscType() &&
 			board[b][loc].getDiscType() == board[c][loc].getDiscType() &&
-			board[c][loc].getDiscType() == board[d][loc].getDiscType() && board[a][loc].getDiscType() != '-');
+			board[c][loc].getDiscType() == board[d][loc].getDiscType() 
+		*/
+		return (board[loc][a].getDiscType() != '-' && board[loc][a].getDiscType() == board[loc][b].getDiscType() &&
+			board[loc][b].getDiscType() == board[loc][c].getDiscType() &&
+			board[loc][c].getDiscType() == board[loc][d].getDiscType());
 	}
 	else if (check == 1) { //vertical checking
-		return (board[loc][a].getDiscType() == board[loc][b].getDiscType() &&
-			board[loc][b].getDiscType() == board[loc][c].getDiscType() &&
-			board[loc][c].getDiscType() == board[loc][d].getDiscType() && board[loc][a].getDiscType() != '-');
+
+		/*
+		cout << (board[a][loc].getDiscType() != '-');
+		cout << (board[a][loc].getDiscType() == board[b][loc].getDiscType());
+		cout << (board[b][loc].getDiscType() == board[c][loc].getDiscType());
+		cout << (board[c][loc].getDiscType() == board[d][loc].getDiscType());
+		cout << endl;
+		*/
+
+		return (board[a][loc].getDiscType() != '-' && board[a][loc].getDiscType() == board[b][loc].getDiscType() &&
+			board[b][loc].getDiscType() == board[c][loc].getDiscType() &&
+			board[c][loc].getDiscType() == board[d][loc].getDiscType());
 
 	}
 
 	else if (check == 2) { //diagonal checking
-		return (board[a][a].getDiscType() == board[b][b].getDiscType() &&
-			board[b][b].getDiscType() == board[c][c].getDiscType() &&
-			board[c][c].getDiscType() == board[d][d].getDiscType() && board[a][a].getDiscType() != '-');
 
+		/*
+		cout << (board[loc][a].getDiscType() != '-');
+		cout << (board[loc][a].getDiscType() == board[loc+b][a+b].getDiscType());
+		cout << (board[loc+b][a+b].getDiscType() == board[loc+c][a+c].getDiscType());
+		cout << (board[loc+d][a+d].getDiscType() == board[loc+d][a+d].getDiscType());
+		cout << endl;
+		*/
+		
+		
+		
+		return ((board[loc][a].getDiscType() != '-') && board[loc][a].getDiscType() == board[loc + b][a + b].getDiscType() &&
+			board[loc + b][a + b].getDiscType() == board[loc + c][a + c].getDiscType() &&
+			board[loc + c][a + c].getDiscType() == board[loc + d][a + d].getDiscType());
+
+	}
+
+	else if (check == 3) {
+
+		/*
+		cout << (board[loc][a].getDiscType() != '-');
+		cout << (board[loc][a].getDiscType() == board[loc - b][a + b].getDiscType());
+		cout << (board[loc - b][a + b].getDiscType() == board[loc - c][a + c].getDiscType());
+		cout << (board[loc - d][a + d].getDiscType() == board[loc - d][a + d].getDiscType());
+		cout << endl;
+		*/
+
+		return ((board[loc][a].getDiscType() != '-') && board[loc][a].getDiscType() == board[loc - b][a + b].getDiscType() &&
+			board[loc - b][a + b].getDiscType() == board[loc - c][a + c].getDiscType() &&
+			board[loc - c][a + c].getDiscType() == board[loc - d][a + d].getDiscType());
 	}
 
 	else
@@ -117,8 +172,8 @@ int Game::horizontalCheck(Board &board) {
 
 	for (row = 0; row < BOARD_ROWS; row++) {
 		for (col = 0; col < BOARD_COLS - 3; col++) {
-			idx = BOARD_COLS * row + col;
-			if (checkFour(board.board,col, 0, idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
+			idx = col;
+			if (checkFour(board.board,row, 0, idx, idx + WIDTH, idx + WIDTH * 2, idx + WIDTH * 3)) {
 				return 1;
 			}
 		}
@@ -134,8 +189,8 @@ int Game::verticalCheck(Board &board) {
 
 	for (row = 0; row < BOARD_ROWS - 3; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
-			idx = BOARD_COLS * row + col;
-			if (checkFour(board.board, col, 1, idx, idx + HEIGHT, idx + HEIGHT * 2, idx + HEIGHT * 3)) { //need the column to check
+			idx = row;
+			if (checkFour(board.board, col, 1, idx, idx + 1, idx +  2, idx + 3)) { //need the column to check
 				return 1;
 			}
 		}
@@ -147,11 +202,15 @@ int Game::diagonalCheck(Board &board) {
 	int row, col, idx, count = 0;
 	const int DIAG_RGT = 6, DIAG_LFT = 8;
 
-	for (row = 0; row < BOARD_ROWS - 3; row++) {
+	for (row = 0; row < BOARD_ROWS; row++) {
 		for (col = 0; col < BOARD_COLS; col++) {
-			idx = BOARD_COLS * row + col;
-			if (count <= 3 && checkFour(board.board, col, 2, idx, idx + DIAG_LFT, idx + DIAG_LFT * 2, idx + DIAG_LFT * 3) || count >= 3 &&
-				checkFour(board.board, col, 2, idx, idx + DIAG_RGT, idx + DIAG_RGT * 2, idx + DIAG_RGT * 3)) {
+
+			if (
+				checkFour(board.board, row, 2, col, 1, 2, 3) ||
+				checkFour(board.board, row, 2, col, -1, -2, -3)||
+				checkFour(board.board, row, 3, col, 1, 2, 3)||
+				checkFour(board.board, row, 3, col, -1, -2, -3)) 
+			{
 				return 1;
 			}
 			count++;
