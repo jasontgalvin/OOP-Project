@@ -26,6 +26,8 @@ public:
 	int verticalCheck(Board &board);
 
 	int diagonalCheck(Board &board);
+
+	void Game::resetEmpty();
 	
 	
 private:

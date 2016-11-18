@@ -113,6 +113,8 @@ void Board::deleteDisc(int move)
 	board[i][move].setDiscType('-');
 }
 
+
+
 void Board::TypeNumInit(void) //type array initialization
 
 {

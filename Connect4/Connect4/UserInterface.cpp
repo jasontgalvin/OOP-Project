@@ -32,11 +32,11 @@ void UserInterface::displayWinner(char playerType)
 	//But its still early to tell how exactly we can tell who's disc it is
 	if (playerType == '1')
 	{
-		cout << "Player 1 is the winner!" << endl;
+		cout << "\nPlayer 1 is the winner!" << endl;
 	}
 	else
 	{
-		cout << "Computer is the winnter!" << endl;
+		cout << "\nComputer is the winnter!" << endl;
 	}
 
 }

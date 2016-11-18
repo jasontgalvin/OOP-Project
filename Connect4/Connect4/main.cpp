@@ -42,20 +42,15 @@ int main() {
 
 			if (turn % 2 == 0) {
 
-				game->setTurn(1);
-
-				for (int row=0; row < 6; row++) {
-					for (int col=0; col < 7; col++) {
-						game->getBoard().board[row][col].setDiscType('-');
-					}
-				}
-				
-				
-
 				ui->displayWinner('1');
+				game->setTurn(1);
+				game->resetEmpty();
+
 			}
 			else {
 				ui->displayWinner('2');
+				game->setTurn(1);
+				game->resetEmpty();
 			}
 
 

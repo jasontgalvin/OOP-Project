@@ -220,3 +220,16 @@ int Game::diagonalCheck(Board &board) {
 	return 0;
 
 }
+
+void Game::resetEmpty() {
+	char playerType = '-';
+
+	for (int i = 0; i<6; i++)//Horizontal
+	{
+		for (int j = 0; j < 7; j++)//Vertical
+		{
+			board.board[i][j].setDiscType(playerType);
+		}
+
+	}
+}
