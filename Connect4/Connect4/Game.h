@@ -1,3 +1,4 @@
+#pragma once
 #include "Player.h"
 #include "Computer.h"
 #include "Board.h"
